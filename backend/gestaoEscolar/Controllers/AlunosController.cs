@@ -1,4 +1,5 @@
 using gestaoEscolar;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,9 +8,10 @@ namespace MyApp.Namespace
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AlunosController : ControllerBase
     {
-        
+
         private readonly AppDbContext _context;
 
         public AlunosController(AppDbContext context)
@@ -36,10 +38,18 @@ namespace MyApp.Namespace
             return Ok(aluno);
         }
 
-        
+
         [HttpPost]
-        public async Task<IActionResult> Post(Aluno aluno)
+        public async Task<IActionResult> Post(AlunoRequestDTO alunoDto)
         {
+            var aluno = new Aluno
+            {
+                Nome = alunoDto.Nome,
+                Curso = alunoDto.Curso,
+                Email = alunoDto.Email,
+                DataNascimento = alunoDto.DataNascimento
+            };
+
             _context.tb_alunos.Add(aluno);
             await _context.SaveChangesAsync();
 
@@ -47,14 +57,19 @@ namespace MyApp.Namespace
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Aluno aluno)
+        public async Task<IActionResult> Put(int id, AlunoRequestDTO alunoDto)
         {
-            if (id != aluno.Id)
+            var alunoExistente = await _context.tb_alunos.FindAsync(id);
+
+            if (alunoExistente == null)
             {
-                return BadRequest();
+                return NotFound(); 
             }
 
-            _context.Entry(aluno).State = EntityState.Modified;
+            alunoExistente.Nome = alunoDto.Nome;
+            alunoExistente.Email = alunoDto.Email;
+            alunoExistente.Curso = alunoDto.Curso;
+            alunoExistente.DataNascimento = alunoDto.DataNascimento;
 
             try
             {
