@@ -2,10 +2,10 @@
 
 public class Aluno
 {
-    private int Id {get; set;}
-    private string Nome {get; set;}
-    private string Email {get; set;}
+    public int Id {get; set;}
+    public required string Nome {get; set;}
+    public required string Email {get; set;}
 
-    private String Curso {get; set;}
-    private DateTime DataNascimento {get; set;}
+    public required String Curso {get; set;}
+    public DateTime DataNascimento {get; set;}
 }
