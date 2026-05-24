@@ -65,15 +65,15 @@ Antes de executar o projeto, certifique-se de possuir os seguintes requisitos in
 #### Login
 
 ```http
-POST /api/auth/login
+POST /api/Auth/login
 ```
 
 **Request**
 
 ```json
 {
-  "email": "joao@email.com",
-  "password": "123456"
+  "usuario": "string",
+  "senha": "string"
 }
 ```
 
@@ -96,7 +96,7 @@ POST /api/auth/login
 #### Listar Alunos
 
 ```http
-GET /api/alunos
+GET /api/Alunos
 ```
 
 ---
@@ -104,7 +104,7 @@ GET /api/alunos
 #### Buscar Aluno por ID
 
 ```http
-GET /api/alunos/{id}
+GET /api/Alunos/{id}
 ```
 
 ---
@@ -112,16 +112,17 @@ GET /api/alunos/{id}
 #### Cadastrar Aluno
 
 ```http
-POST /api/alunos
+POST /api/Alunos
 ```
 
 **Request**
 
 ```json
 {
-  "nome": "Maria Oliveira",
-  "email": "maria@email.com",
-  "idade": 20
+  "Nome": "Jonh Doe",
+  "Email": "jhondoe@email.com",
+  "Curso": "Sistemas para internet"
+  "DataNascimento": 2006-11-8
 }
 ```
 
@@ -130,16 +131,18 @@ POST /api/alunos
 #### Atualizar Aluno
 
 ```http
-PUT /api/alunos/{id}
+PUT /api/Alunos/{id}
 ```
 
 **Request**
 
 ```json
 {
-  "nome": "Maria Oliveira",
-  "email": "maria@email.com",
-  "idade": 21
+  "Nome": "Jonh Doe",
+  "Email": "jhondoe@email.com",
+  "Curso": "Sistemas para internet"
+  "DataNascimento": 2006-11-8
+
 }
 ```
 
@@ -148,7 +151,7 @@ PUT /api/alunos/{id}
 #### Remover Aluno
 
 ```http
-DELETE /api/alunos/{id}
+DELETE /api/Alunos/{id}
 ```
 
 ---
@@ -170,13 +173,20 @@ Authorization: Bearer seu_token_jwt
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/api-gerenciamento-alunos.git
+git clone https://github.com/dev-jefferson-matheus-ifrn/avaliacao1.git
 ```
 
 ```bash
-cd api-gerenciamento-alunos
+cd avaliacao1
 ```
 
+```bash
+cd backend
+```
+
+```bash
+cd gestaoEscolar
+```
 ---
 
 ### 2. Configurar Banco de Dados
@@ -208,6 +218,10 @@ Exemplo:
 ### 3. Executar as Migrations
 
 ```bash
+dotnet ef migrations add Initial
+```
+
+```bash
 dotnet ef database update
 ```
 
@@ -222,15 +236,8 @@ dotnet run
 A API estará disponível em:
 
 ```text
-https://localhost:5001
+https://localhost:5025
 ```
-
-ou
-
-```text
-http://localhost:5000
-```
-
 ---
 
 ### 5. Acessar o Swagger
@@ -238,7 +245,7 @@ http://localhost:5000
 Após iniciar a aplicação, acesse:
 
 ```text
-https://localhost:5001/swagger
+https://localhost:5025/swagger
 ```
 
 ---
@@ -246,16 +253,30 @@ https://localhost:5001/swagger
 ## 📂 Estrutura do Projeto
 
 ```text
-src/
+gestaoEscolar/
 ├── Controllers/
-├── Services/
-├── Repositories/
-├── Entities/
-├── DTOs/
+│   ├── AlunosController.cs
+│   └── AuthController.cs
+│
 ├── Data/
-├── Migrations/
-├── Configurations/
-└── Program.cs
+│   └── AppDbContext.cs
+│
+├── DTOs/
+│   ├── AlunoRequestDTO.cs
+│   └── AuthDTO.cs
+│
+│
+├── Model/
+│   ├── Aluno.cs
+│   └── UsuarioADM.cs
+│
+├── Properties/
+│   └── launchSettings.json
+│
+├── appsettings.json
+├── appsettings.Development.json
+├── Program.cs
+└── gestaoEscolar.csproj
 ```
 
 ---
@@ -266,65 +287,15 @@ src/
 - Controle de perfis e permissões (Roles)
 - Paginação de resultados
 - Filtros e ordenação de alunos
-- Testes unitários e de integração
-- Logs centralizados
-- Deploy automatizado com CI/CD
-- Containerização completa com Docker Compose
-- Monitoramento e observabilidade
+- Implementação de perfis(Alunos, professores, diretor)
+- Banco de dados normalizado
 
 ---
 
-## 🤝 Contribuição
-
-Contribuições são bem-vindas.
-
-1. Faça um Fork do projeto
-2. Crie uma branch para sua feature
-
-```bash
-git checkout -b feature/minha-feature
-```
-
-3. Faça commit das alterações
-
-```bash
-git commit -m "Minha nova feature"
-```
-
-4. Faça push para a branch
-
-```bash
-git push origin feature/minha-feature
-```
-
-5. Abra um Pull Request
-
----
 
 ## 👨‍💻 Desenvolvedores
 
 | Nome | Função |
 |--------|--------|
-| Seu Nome | Desenvolvedor Back-end |
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
-
-Consulte o arquivo `LICENSE` para mais informações.
-
----
-
-## 📞 Contato
-
-Caso tenha dúvidas ou sugestões, entre em contato através dos canais abaixo:
-
-- Email: seuemail@exemplo.com
-- LinkedIn: https://linkedin.com/in/seu-perfil
-- GitHub: https://github.com/seu-usuario
-
----
-
-⭐ Se este projeto foi útil para você, considere deixar uma estrela no repositório.
+| Jefferson Matheus Ferreira de Lima | Desenvolvedor Back-end |
+| Letícia Geovana Lopes dos Santos   | Desenvolvedora Front-end|
