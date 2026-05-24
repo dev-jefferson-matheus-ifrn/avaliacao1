@@ -259,30 +259,24 @@ https://localhost:5025/swagger
 ## 📂 Estrutura do Projeto
 
 ```text
-gestaoEscolar/
-├── Controllers/
-│   ├── AlunosController.cs
-│   └── AuthController.cs
+├── backend
+│   └── gestaoEscolar
+│       ├── Controllers
+│       ├── Data
+│       ├── DTOs
+│       ├── Migrations
+│       ├── Model
+│       ├── Program.cs
+│       └── appsettings.json
 │
-├── Data/
-│   └── AppDbContext.cs
-│
-├── DTOs/
-│   ├── AlunoRequestDTO.cs
-│   └── AuthDTO.cs
-│
-│
-├── Model/
-│   ├── Aluno.cs
-│   └── UsuarioADM.cs
-│
-├── Properties/
-│   └── launchSettings.json
-│
-├── appsettings.json
-├── appsettings.Development.json
-├── Program.cs
-└── gestaoEscolar.csproj
+└── frontend
+    ├── public
+    ├── src
+    │   ├── assets
+    │   ├── App.tsx
+    │   └── main.tsx
+    ├── package.json
+    └── vite.config.ts
 ```
 
 ---
@@ -297,7 +291,8 @@ gestaoEscolar/
 - Banco de dados normalizado
 
 ---
-
+## 🚧 `Front-end em andamento`
+---
 
 ## 👨‍💻 Desenvolvedores
 
