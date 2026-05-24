@@ -1,6 +1,6 @@
 # 📚 Gestão Escolar
 
-Uma API REST desenvolvida com **.NET 10** e **MySQL**, responsável pelo gerenciamento de alunos, oferecendo operações de cadastro, consulta, atualização e remoção de registros. A aplicação também conta com um sistema de autenticação e autorização baseado em **JWT (JSON Web Token)**, garantindo segurança no acesso aos recursos protegidos.
+Uma API REST desenvolvida com **.NET 10** e **MySQL com front-end desenvolvido em React**, responsável pelo gerenciamento de alunos, oferecendo operações de cadastro, consulta, atualização e remoção de registros. A aplicação também conta com um sistema de autenticação e autorização baseado em **JWT (JSON Web Token)**, garantindo segurança no acesso aos recursos protegidos.
 
 ---
 
@@ -18,6 +18,10 @@ A aplicação permite que usuários autenticados realizem operações de CRUD (C
 - MySQL (última versão)
 - JWT (JSON Web Token)
 - Swagger
+- Node 24.x
+- Yarn 1.22.x
+- React 19.2.x
+- 8.0.x
 
 ---
 
@@ -26,7 +30,9 @@ A aplicação permite que usuários autenticados realizem operações de CRUD (C
 Antes de executar o projeto, certifique-se de possuir os seguintes requisitos instalados:
 
 - [.NET SDK 10](https://dotnet.microsoft.com/)
-- MySQL 
+- MySQL
+- Node
+- Yarn
 - Git
 - IDE de sua preferência:
   - Visual Studio 2022+
